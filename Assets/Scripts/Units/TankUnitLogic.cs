@@ -1,57 +1,50 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class TankUnitLogic : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private string detected_TAG1;
-    [SerializeField] private string detected_TAG2;
-    public List<GameObject> Enemies_list = new List<GameObject>();
-    public List<GameObject> TARGETER_LIST = new List<GameObject>();
+    [SerializeField] private string enemyTag;
+    [SerializeField] private float SearchInterval=5f;
+
     private GameObjectManager unitsManager;
     private GameObject player;
+    private GameObject nearestEnemy = null;
 
     private void Start()
     {
         unitsManager=GameObject.FindAnyObjectByType<GameObjectManager>();
-        foreach (GameObject Enemies in GameObject.FindGameObjectsWithTag(detected_TAG1))
-        {
-            Enemies_list.Add(Enemies);
-        }
-
-        foreach (GameObject TARGETER in GameObject.FindGameObjectsWithTag(detected_TAG2))
-        {
-            TARGETER_LIST.Add(TARGETER);
-        }
+        StartCoroutine(SearchNearestEnemyCoroutine());
     }
 
     private void Update()
     {
-        //foreach (var TARGETER in TARGETER_LIST)
-        //{
-        //    var nearest = float.MaxValue;
-        //    GameObject NearestEnemie = null;
-        //    foreach (var Enemies in Enemies_list)
-        //    {
-        //        if (Vector3.Distance(transform.position, Enemies.transform.position) < nearest)
-        //        {
-        //            nearest = (Vector3.Distance(transform.position, Enemies.transform.position));
-        //            NearestEnemie = Enemies;
-        //            agent.SetDestination(NearestEnemie.transform.position);
-        //        }
-        //    }
-        //}
-        var nearest = float.MaxValue;
-        GameObject NearestEnemie = null;
-        foreach (var Enemies in Enemies_list)
+        if (nearestEnemy == null) return;
+        Move();
+    }
+
+    private void Move()
+    {
+        agent.SetDestination(nearestEnemy.transform.position);
+    }
+
+    private IEnumerator SearchNearestEnemyCoroutine()
+    {
+        while (true)
         {
-            if (Vector3.Distance(transform.position, Enemies.transform.position) < nearest)
+            var nearest = float.MaxValue;
+            if (!unitsManager.Units.ContainsKey(enemyTag)) yield return null;
+            if (nearestEnemy==null) yield return null;
+            foreach (var Enemies in unitsManager.Units[enemyTag])
             {
-                nearest = (Vector3.Distance(transform.position, Enemies.transform.position));
-                NearestEnemie = Enemies;
-                agent.SetDestination(NearestEnemie.transform.position);
+                if (Vector3.Distance(transform.position, Enemies.transform.position) < nearest)
+                {
+                    nearest = (Vector3.Distance(transform.position, Enemies.transform.position));
+                    nearestEnemy = Enemies;
+                }
             }
+            yield return new WaitForSeconds(SearchInterval);
         }
     }
 }

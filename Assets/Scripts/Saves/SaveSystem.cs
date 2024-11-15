@@ -1,20 +1,19 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public partial class SaveData
 {
-    //про писывай тут данные для сохранения, например public int a = 0;
+    //прописывай тут данные для сохранения, например public int a = 0;
     public SaveData() { }
 }
 
 public class SaveSystem : MonoBehaviour
 {
     [SerializeField] private ISaveService service;
-    private const float AutoSaveInterval = 5f;
-    private bool isAutoSave = true;
-    private float time = 0;
+    [SerializeField] private float AutoSaveInterval = 5f;
 
     public static SaveData Data;
 
@@ -25,17 +24,9 @@ public class SaveSystem : MonoBehaviour
         Load();
     }
 
-    private void Update()
+    private void Start()
     {
-        if (isAutoSave)
-        {
-            if (time <= 0)
-            {
-                time = AutoSaveInterval;
-                Save();
-            }
-            time -= Time.deltaTime;
-        }
+        StartCoroutine(AutoSaveCoroutine());
     }
 
     public void Save()
@@ -54,6 +45,16 @@ public class SaveSystem : MonoBehaviour
     private void Load()
     {
         Data = service.Load();
+    }
+
+    private IEnumerator AutoSaveCoroutine()
+    {
+        while (true)
+        {
+            Debug.Log("Autosave");
+            Save();
+            yield return new WaitForSeconds(AutoSaveInterval);
+        }
     }
 
     private void OnDestroy()
