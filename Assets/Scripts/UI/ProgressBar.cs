@@ -1,3 +1,4 @@
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,9 +30,9 @@ public class ProgressBar : MonoBehaviour
         Init();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (currentLine.fillAmount != fill) Invoke("SmoothAddValue", 0.0001f);
+        if (currentLine.fillAmount != fill) SmoothAddValue();
     }
 
     private void Init()
@@ -47,12 +48,7 @@ public class ProgressBar : MonoBehaviour
 
     private void SmoothAddValue()
     {
-        if (fill>=1)
-        {
-            fill = 1;
-            currentLine.fillAmount = fill;
-            return;
-        }
+        if (fill>=1 && currentLine.fillAmount>=1) return;
 
         if (currentLine.fillAmount > fill + 0.01f) currentLine.fillAmount -= 0.01f;
         else if (currentLine.fillAmount < fill - 0.01f) currentLine.fillAmount += 0.01f;
