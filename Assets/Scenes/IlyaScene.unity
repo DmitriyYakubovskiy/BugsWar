@@ -804,10 +804,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61190ac9749ac6f44b213744509fbbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detected_TAG1: EnemyTower
-  detected_TAG2: EnemyTower
-  Enemies_list: []
-  TARGETER_LIST: []
+  agent: {fileID: 0}
+  enemyTag: 
+  SearchInterval: 5
 --- !u!195 &584546587
 NavMeshAgent:
   m_ObjectHideFlags: 0

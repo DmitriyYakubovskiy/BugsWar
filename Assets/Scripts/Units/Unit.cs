@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour, IUnit
     public void TakeDamage(float damage)
     {
         Lives -= damage;
+        if(Lives<=0) Destroy(gameObject);
     }
 
     private void OnDestroy()

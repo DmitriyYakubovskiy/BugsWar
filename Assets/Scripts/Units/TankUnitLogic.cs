@@ -34,10 +34,19 @@ public class TankUnitLogic : MonoBehaviour
         while (true)
         {
             var nearest = float.MaxValue;
-            if (!unitsManager.Units.ContainsKey(enemyTag)) yield return null;
-            if (nearestEnemy==null) yield return null;
+            if (!unitsManager.Units.ContainsKey(enemyTag))
+            {
+                yield return new WaitForSeconds(0.5f);
+                continue;
+            }
+            if (nearestEnemy != null)
+            {
+                yield return new WaitForSeconds(0.5f);
+                continue;
+            }
             foreach (var Enemies in unitsManager.Units[enemyTag])
             {
+                if(Enemies==null) continue;
                 if (Vector3.Distance(transform.position, Enemies.transform.position) < nearest)
                 {
                     nearest = (Vector3.Distance(transform.position, Enemies.transform.position));

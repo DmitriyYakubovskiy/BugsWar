@@ -15,12 +15,4 @@ public class GameObjectManager : MonoBehaviour
         if(!units.ContainsKey(other.tag)) units.Add(other.tag, new List<GameObject>());
         units[other.tag].Add(other.gameObject);
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("exit");
-        if (!targetTags.Contains(other.tag)) return;
-        if (!units.ContainsKey(other.tag)) return;
-        units[other.tag].Remove(other.gameObject);
-    }
 }

@@ -12,13 +12,7 @@ public class ShootingNew : MonoBehaviour
     [SerializeField] Bullet bullet;
     private float reloadTimer;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (target != null)
         {
