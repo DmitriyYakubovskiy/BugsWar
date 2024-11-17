@@ -1,17 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    [SerializeField] private string attackTag="";
     [SerializeField] private float damage=1;
     [SerializeField] private float attackInterval = 1;
-    private Unit objectForAttack;
+    private Unit objectForAttack = null;
+
+    public bool ObjectForAttackInArea { get; set; } = false;
+
+    public void SetAttackObject(Unit objectForAttack)
+    {
+        if (objectForAttack != null) objectForAttack.die -= ObjectForAttackDied;
+        this.objectForAttack = objectForAttack;
+        objectForAttack.die += ObjectForAttackDied;
+    }
 
     private void Start()
     {
         StartCoroutine(AttackCoroutine());
+    }
+
+    private void ObjectForAttackDied(GameObject gameObject)
+    {
+        if (objectForAttack != null) objectForAttack.die -= ObjectForAttackDied;
+        ObjectForAttackInArea =false;
+        objectForAttack = null;
     }
 
     private IEnumerator AttackCoroutine()
@@ -20,7 +34,13 @@ public class AttackController : MonoBehaviour
         {
             if (objectForAttack == null)
             {
-                yield return new WaitForSeconds(0.5f);
+                ObjectForAttackInArea = false;
+                yield return new WaitForSeconds(0.2f);
+                continue;
+            }
+            if (!ObjectForAttackInArea)
+            {
+                yield return new WaitForSeconds(0.2f);
                 continue;
             }
             objectForAttack.TakeDamage(damage);
@@ -28,20 +48,15 @@ public class AttackController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == attackTag)
-        {
-            if (!other.gameObject.GetComponent<Unit>()) return;
-            objectForAttack = other.gameObject.GetComponent<Unit>();
-        }
+        if (objectForAttack == null) return;
+        if (other.gameObject == objectForAttack.gameObject) ObjectForAttackInArea = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == attackTag)
-        {
-            if(other.gameObject==objectForAttack.gameObject) objectForAttack=null;
-        }
+        if (objectForAttack == null) return;
+        if (other.gameObject == objectForAttack.gameObject) ObjectForAttackInArea = false;
     }
 }

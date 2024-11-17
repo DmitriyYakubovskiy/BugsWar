@@ -17,6 +17,7 @@ public class Unit : MonoBehaviour, IUnit
     }
 
     public event Action<float> livesChanged;
+    public event Action<GameObject> die;
 
     private void Start()
     {
@@ -29,7 +30,13 @@ public class Unit : MonoBehaviour, IUnit
     public void TakeDamage(float damage)
     {
         Lives -= damage;
-        if(Lives<=0) Destroy(gameObject);
+        if (Lives <= 0) Die();
+    }
+
+    private void Die()
+    {
+        die?.Invoke(gameObject);
+        Destroy(gameObject);
     }
 
     private void OnDestroy()

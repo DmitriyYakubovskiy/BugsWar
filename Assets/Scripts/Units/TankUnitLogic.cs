@@ -9,11 +9,12 @@ public class TankUnitLogic : MonoBehaviour
     [SerializeField] private float SearchInterval=5f;
 
     private GameObjectManager unitsManager;
-    private GameObject player;
     private GameObject nearestEnemy = null;
+    private AttackController attackController;
 
     private void Start()
     {
+        attackController = GetComponent<AttackController>();
         unitsManager=GameObject.FindAnyObjectByType<GameObjectManager>();
         StartCoroutine(SearchNearestEnemyCoroutine());
     }
@@ -26,6 +27,7 @@ public class TankUnitLogic : MonoBehaviour
 
     private void Move()
     {
+        if (attackController.ObjectForAttackInArea) return;
         agent.SetDestination(nearestEnemy.transform.position);
     }
 
@@ -36,21 +38,18 @@ public class TankUnitLogic : MonoBehaviour
             var nearest = float.MaxValue;
             if (!unitsManager.Units.ContainsKey(enemyTag))
             {
-                yield return new WaitForSeconds(0.5f);
-                continue;
-            }
-            if (nearestEnemy != null)
-            {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
                 continue;
             }
             foreach (var Enemies in unitsManager.Units[enemyTag])
             {
                 if(Enemies==null) continue;
+                if (Enemies == gameObject) continue; 
                 if (Vector3.Distance(transform.position, Enemies.transform.position) < nearest)
                 {
                     nearest = (Vector3.Distance(transform.position, Enemies.transform.position));
                     nearestEnemy = Enemies;
+                    attackController.SetAttackObject(nearestEnemy.GetComponent<Unit>());
                 }
             }
             yield return new WaitForSeconds(SearchInterval);
