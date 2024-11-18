@@ -5,13 +5,13 @@ using UnityEngine.AI;
 public class ShooterUnitLogic : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private string enemyTag;
     [SerializeField] private float SearchInterval = 5f;
-
+    [SerializeField] public string enemyTag;
 
     private GameObjectManager unitsManager;
     private GameObject nearestEnemy = null;
     private ShootController shootController;
+    
 
 
     private void Start()
@@ -29,7 +29,11 @@ public class ShooterUnitLogic : MonoBehaviour
 
     private void Move()
     {
-        if (shootController.ObjectForAttackInArea) return;
+        if (shootController.ObjectForAttackInArea)
+        {
+            agent.SetDestination(transform.position);
+            return;
+        }
         agent.SetDestination(nearestEnemy.transform.position);
     }
 

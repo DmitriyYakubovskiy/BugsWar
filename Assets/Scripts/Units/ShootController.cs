@@ -7,6 +7,8 @@ public class ShootController : MonoBehaviour
     [SerializeField] private float attackInterval = 1;
     [SerializeField] private Bullet bullet;
     [SerializeField] private GameObject gunPoint;
+    [SerializeField] private int force;
+    private ShooterUnitLogic shooterUnitLogic;
     private Unit objectForAttack = null;
 
 
@@ -22,6 +24,7 @@ public class ShootController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(AttackCoroutine());
+        shooterUnitLogic = GetComponent<ShooterUnitLogic>();
     }
 
     private void ObjectForAttackDied(GameObject gameObject)
@@ -33,7 +36,9 @@ public class ShootController : MonoBehaviour
     private void Shoot()
     {
         Bullet son = Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
-        son.GetComponent<Rigidbody>().AddForce(-(gunPoint.transform.position - objectForAttack.transform.position), ForceMode.Impulse);
+        son.damage = damage;
+        son.enemyTag = shooterUnitLogic.enemyTag;
+        son.GetComponent<Rigidbody>().AddForce(-(gunPoint.transform.position - objectForAttack.transform.position).normalized * force, ForceMode.Impulse);
  
     }
 
@@ -52,7 +57,7 @@ public class ShootController : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 continue;
             }
-            objectForAttack.TakeDamage(damage);
+            Shoot();
             yield return new WaitForSeconds(attackInterval);
         }
     }

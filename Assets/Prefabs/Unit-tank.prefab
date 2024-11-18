@@ -124,15 +124,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd515122af45a0a44ac16ad4b9175d83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.1842527
+      value: 3.057671
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd515122af45a0a44ac16ad4b9175d83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.58
+      value: 0.05000019
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd515122af45a0a44ac16ad4b9175d83, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.83
+      value: 11.395368
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd515122af45a0a44ac16ad4b9175d83, type: 3}
       propertyPath: m_LocalRotation.w
@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cd515122af45a0a44ac16ad4b9175d83, type: 3}
       propertyPath: m_TagString
-      value: Unit
+      value: BlueUnit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -379,7 +379,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
