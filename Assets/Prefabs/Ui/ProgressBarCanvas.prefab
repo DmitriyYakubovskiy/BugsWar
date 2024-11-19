@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7543484247891776167}
   - component: {fileID: 1499428411355553048}
   - component: {fileID: 3960836179727636182}
+  - component: {fileID: 8499823620928572513}
   m_Layer: 0
   m_Name: ProgressBarCanvas
   m_TagString: Untagged
@@ -36,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.473}
+  m_AnchoredPosition: {x: 0, y: 0.47302246}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7543484247891776167
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3960836179727636182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +103,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8499823620928572513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988033476970521284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf11bcab7d43464fb9ded3c65bee113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4248257709757329579
 PrefabInstance:
   m_ObjectHideFlags: 0
