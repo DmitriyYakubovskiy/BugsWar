@@ -50,8 +50,8 @@ public class ProgressBar : MonoBehaviour
     {
         if (fill>=1 && currentLine.fillAmount>=1) return;
 
-        if (currentLine.fillAmount > fill + 0.01f) currentLine.fillAmount -= 0.01f;
-        else if (currentLine.fillAmount < fill - 0.01f) currentLine.fillAmount += 0.01f;
+        if (currentLine.fillAmount > fill + 0.05f) currentLine.fillAmount -= 0.05f;
+        else if (currentLine.fillAmount < fill - 0.05f) currentLine.fillAmount += 0.05f;
         else currentLine.fillAmount = fill;
     }
 }

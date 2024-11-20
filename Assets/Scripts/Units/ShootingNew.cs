@@ -5,8 +5,9 @@ using UnityEngine;
 public class ShootingNew : MonoBehaviour
 {
     [SerializeField] int attackDistance;
+    [SerializeField] private float damage = 1;
     [SerializeField] LayerMask turretLayerMask;
-    [SerializeField] string unitTag, unitTag2; //теги юнитов, которых будет атаковать стрелок
+    [SerializeField] string unitTag; //теги юнитов, которых будет атаковать стрелок
     [SerializeField] GameObject target, towerHead;
     [SerializeField] float reloadCooldown;
     [SerializeField] Bullet bullet;
@@ -27,6 +28,8 @@ public class ShootingNew : MonoBehaviour
                 else
                 {
                     Bullet son = Instantiate(bullet, towerHead.transform.position, towerHead.transform.rotation);
+                    son.enemyTag = unitTag;
+                    son.damage = damage;
                     son.GetComponent<Rigidbody>().AddForce(-(towerHead.transform.position - target.transform.position), ForceMode.Impulse);
                     son.enemyTag = unitTag;
                     son.damage = damage;
