@@ -26,6 +26,10 @@ public class ShootController : MonoBehaviour
         StartCoroutine(AttackCoroutine());
         shooterUnitLogic = GetComponent<ShooterUnitLogic>();
     }
+    private void Update()
+    {
+        print(ObjectForAttackInArea);
+    }
 
     private void ObjectForAttackDied(GameObject gameObject)
     {
@@ -65,12 +69,12 @@ public class ShootController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (objectForAttack == null) return;
-        if (other.gameObject == objectForAttack.gameObject) ObjectForAttackInArea = true;
+        if (other.gameObject == objectForAttack.gameObject && other.isTrigger == false) ObjectForAttackInArea = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (objectForAttack == null) return;
-        if (other.gameObject == objectForAttack.gameObject) ObjectForAttackInArea = false;
+        if (other.gameObject == objectForAttack.gameObject && other.isTrigger == false) ObjectForAttackInArea = false;
     }
 }

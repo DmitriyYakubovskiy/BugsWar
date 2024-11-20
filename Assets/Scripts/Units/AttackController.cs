@@ -51,7 +51,7 @@ public class AttackController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (objectForAttack == null) return;
-        if (other.gameObject == objectForAttack.gameObject) ObjectForAttackInArea = true;
+        if (other.gameObject == objectForAttack.gameObject && other.isTrigger == false) ObjectForAttackInArea = true;
     }
 
     private void OnTriggerExit(Collider other)

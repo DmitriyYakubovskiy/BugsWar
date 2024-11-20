@@ -293,6 +293,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBar: {fileID: 0}
   lives: 5000
+--- !u!1001 &334192638
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7173280416287034946, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: enemyTag
+      value: BlueUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285897298200012395, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_Name
+      value: Unit-tank (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285897298200012395, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_TagString
+      value: RedUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.0823383
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950933966528249041, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
 --- !u!1 &343628939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,14 +1334,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1843788068107112091, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
-      propertyPath: damage
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7173280416287034946, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
-      propertyPath: enemyTag
-      value: RedTower
-      objectReference: {fileID: 0}
     - target: {fileID: 7285897298200012395, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
       propertyPath: m_Name
       value: Unit-tank
@@ -1830,6 +1887,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1430755db237ece4d86ad2e2553db0d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1383824276}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1430755db237ece4d86ad2e2553db0d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1383824277}
   m_SourcePrefab: {fileID: 100100000, guid: 1430755db237ece4d86ad2e2553db0d7, type: 3}
 --- !u!1 &1383824268 stripped
 GameObject:
@@ -1891,7 +1951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1383824270}
   SearchInterval: 5
-  enemyTag: RedTower
+  enemyTag: RedUnit
 --- !u!114 &1383824273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1973,6 +2033,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressBar: {fileID: 0}
   lives: 1000
+--- !u!135 &1383824277
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383824268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1478176915
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,12 +2195,13 @@ MonoBehaviour:
   turretLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  unitTag: Unit
+  unitTag: BlueUnit
   unitTag2: 
   target: {fileID: 0}
   towerHead: {fileID: 487289896}
   reloadCooldown: 2
   bullet: {fileID: 6949589082416149493, guid: 6e43f8aac970f9444a6092308b8fe79f, type: 3}
+  damage: 10
 --- !u!114 &1478176922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2521,3 +2603,4 @@ SceneRoots:
   - {fileID: 1383824267}
   - {fileID: 343628943}
   - {fileID: 1030588202}
+  - {fileID: 334192638}

@@ -10,6 +10,7 @@ public class ShootingNew : MonoBehaviour
     [SerializeField] GameObject target, towerHead;
     [SerializeField] float reloadCooldown;
     [SerializeField] Bullet bullet;
+    [SerializeField] int damage;    
     private float reloadTimer;
 
     private void Update()
@@ -27,6 +28,8 @@ public class ShootingNew : MonoBehaviour
                 {
                     Bullet son = Instantiate(bullet, towerHead.transform.position, towerHead.transform.rotation);
                     son.GetComponent<Rigidbody>().AddForce(-(towerHead.transform.position - target.transform.position), ForceMode.Impulse);
+                    son.enemyTag = unitTag;
+                    son.damage = damage;
                     reloadTimer = reloadCooldown;
                 }
             }
