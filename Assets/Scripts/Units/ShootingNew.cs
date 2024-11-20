@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootingNew : MonoBehaviour
 {
     [SerializeField] int attackDistance;
-    [SerializeField] string unitTag; //теги юнитов, которых будет атаковать стрелок
+    [SerializeField] private Tags enemyTag;
     [SerializeField] GameObject target, towerHead;
     [SerializeField] float reloadCooldown, force = 2;
     [SerializeField] Bullet bullet;
@@ -15,6 +15,8 @@ public class ShootingNew : MonoBehaviour
     private GameObjectManager unitsManager;
     private GameObject nearestmob = null;
     private float reloadTimer;
+
+    public string EnemyTag { get => GameDataHelper.GetTag(enemyTag); set => enemyTag = GameDataHelper.GetTag(value); }
 
     private void Start()
     {
@@ -36,10 +38,10 @@ public class ShootingNew : MonoBehaviour
                 else
                 {
                     Bullet son = Instantiate(bullet, towerHead.transform.position, towerHead.transform.rotation);
-                    son.enemyTag = unitTag;
+                    son.enemyTag = EnemyTag;
                     son.damage = damage;
                     son.GetComponent<Rigidbody>().AddForce(-(towerHead.transform.position - target.transform.position).normalized * force + Vector3.up, ForceMode.Impulse);
-                    son.enemyTag = unitTag;
+                    son.enemyTag = EnemyTag;
                     son.damage = damage;
                     reloadTimer = reloadCooldown;
                 }
@@ -74,12 +76,12 @@ public class ShootingNew : MonoBehaviour
         while (true)
         {
             var nearest = float.MaxValue;
-            if (!unitsManager.Units.ContainsKey(unitTag))
+            if (!unitsManager.Units.ContainsKey(EnemyTag))
             {
                 yield return new WaitForSeconds(0.2f);
                 continue;
             }
-            foreach (var Enemies in unitsManager.Units[unitTag])
+            foreach (var Enemies in unitsManager.Units[EnemyTag])
             {
                 if (Enemies == null) continue;
                 if (Enemies == gameObject) continue;

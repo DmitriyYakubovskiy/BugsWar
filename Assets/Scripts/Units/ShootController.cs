@@ -46,7 +46,7 @@ public class ShootController : MonoBehaviour
     {
         Bullet son = Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
         son.damage = damage;
-        son.enemyTag = shooterUnitLogic.enemyTag;
+        son.enemyTag = shooterUnitLogic.Unit.EnemyTag;
         son.GetComponent<Rigidbody>().AddForce(-(gunPoint.transform.position - objectForAttack.transform.position).normalized * force + Vector3.up, ForceMode.Impulse);
  
     }

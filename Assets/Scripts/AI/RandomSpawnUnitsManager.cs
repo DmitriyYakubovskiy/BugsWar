@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RandomSpawnUnitsManager : MonoBehaviour
 {
-    [SerializeField] private GameObject prefab1, prefab2; // Префаб для спавна
+    [SerializeField] private GameObject[] prefabs; // Префаб для спавна
     [SerializeField] private float spawnInterval = 4f; // Интервал спавна в секундах
     [SerializeField] private Vector3 spawnAreaSize = new Vector3(5f, 0f, 5f); // Размер области спавна
+    [SerializeField] private Tags aiTag; 
 
     private bool duo;
+
+    public string AiTag { get => GameDataHelper.GetTag(aiTag); set => aiTag = GameDataHelper.GetTag(value); }
 
     private void Start()
     {
@@ -24,16 +25,14 @@ public class RandomSpawnUnitsManager : MonoBehaviour
         );
         if (duo)
         {
-            GameObject son = Instantiate(prefab1, spawnPosition, Quaternion.identity);
-            son.transform.tag = "RedUnit";
-            son.GetComponent<ShooterUnitLogic>().enemyTag = "BlueTower";
+            GameObject son = Instantiate(prefabs[0], spawnPosition, Quaternion.identity);
+            son.transform.tag = AiTag;
             duo = false;
         }
         else
         {
-            GameObject son = Instantiate(prefab2, spawnPosition, Quaternion.identity);
-            son.tag = "RedUnit";
-            son.GetComponent<TankUnitLogic>().enemyTag = "BlueUnit";
+            GameObject son = Instantiate(prefabs[1], spawnPosition, Quaternion.identity);
+            son.tag = AiTag;
             duo =true;
         }
     }

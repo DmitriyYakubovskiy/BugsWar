@@ -1,4 +1,3 @@
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +32,11 @@ public class ProgressBar : MonoBehaviour
     private void FixedUpdate()
     {
         if (currentLine.fillAmount != fill) SmoothAddValue();
+    }
+
+    public void SetColor(Color color)
+    {
+        currentLine.color = color;
     }
 
     private void Init()

@@ -5,16 +5,19 @@ using UnityEngine.AI;
 public class TankUnitLogic : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private float SearchInterval=5f;
+    [SerializeField] private float searchInterval=5f;
+    [SerializeField] private TypesOfUnits typeForAttack;
 
     private GameObjectManager unitsManager;
     private GameObject nearestEnemy = null;
     private AttackController attackController;
+    private Unit unit;
 
-    public string enemyTag;
+    public Unit Unit { get { return unit; } }
 
     private void Start()
     {
+        unit=GetComponent<Unit>();
         attackController = GetComponent<AttackController>();
         unitsManager=GameObject.FindAnyObjectByType<GameObjectManager>();
         StartCoroutine(SearchNearestEnemyCoroutine());
@@ -37,23 +40,24 @@ public class TankUnitLogic : MonoBehaviour
         while (true)
         {
             var nearest = float.MaxValue;
-            if (!unitsManager.Units.ContainsKey(enemyTag))
+            if (!unitsManager.Units.ContainsKey(unit.EnemyTag))
             {
                 yield return new WaitForSeconds(0.2f);
                 continue;
             }
-            foreach (var Enemies in unitsManager.Units[enemyTag])
+            foreach (var unit in unitsManager.Units[unit.EnemyTag])
             {
-                if(Enemies==null) continue;
-                if (Enemies == gameObject) continue; 
-                if (Vector3.Distance(transform.position, Enemies.transform.position) < nearest)
+                if(unit==null) continue;
+                if (unit == gameObject) continue;
+                if (unit.GetComponent<Unit>().TypeOfUnit != typeForAttack) continue;
+                if (Vector3.Distance(transform.position, unit.transform.position) < nearest)
                 {
-                    nearest = (Vector3.Distance(transform.position, Enemies.transform.position));
-                    nearestEnemy = Enemies;
+                    nearest = (Vector3.Distance(transform.position, unit.transform.position));
+                    nearestEnemy = unit;
                     attackController.SetAttackObject(nearestEnemy.GetComponent<Unit>());
                 }
             }
-            yield return new WaitForSeconds(SearchInterval);
+            yield return new WaitForSeconds(searchInterval);
         }
     }
 }

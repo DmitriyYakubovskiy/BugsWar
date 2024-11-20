@@ -6,10 +6,11 @@ TagManager:
   tags:
   - BlueUnit
   - RedUnit
-  - Unit
   - RedTower
   - BlueTower
   - Platform
+  - BlueTeam
+  - RedTeam
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - UI
   - Monster
   - Ground
-  - 
-  - 
+  - GroundRed
+  - GroundBlue
   - 
   - 
   - 

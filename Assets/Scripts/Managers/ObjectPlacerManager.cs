@@ -8,14 +8,16 @@ public class ObjectPlacerManager : MonoBehaviour
     [SerializeField] private GameObject[] prefabs;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform[] buttons;
+    [SerializeField] private Tags playerTag;
     [SerializeField] private float rayDistanse = 100f;
-    private GraphicRaycaster graphicRaycaster;
+    [SerializeField]  private GraphicRaycaster graphicRaycaster;
     private EventSystem eventSystem;
     private int chosenPrefabId = -1;
 
+    public string PlayerTag { get => GameDataHelper.GetTag(playerTag); set => playerTag = GameDataHelper.GetTag(value); }
+
     private void Start()
     {
-        graphicRaycaster = FindObjectOfType<GraphicRaycaster>();
         eventSystem = FindObjectOfType<EventSystem>();
     }
 
@@ -27,10 +29,10 @@ public class ObjectPlacerManager : MonoBehaviour
 
     public void ChosePrefab(int id)
     {
-        if (chosenPrefabId >= 0) buttons[chosenPrefabId].transform.localScale /= 1.1f;
+        if (chosenPrefabId >= 0) buttons[chosenPrefabId].transform.localScale /= 1.2f;
         if (chosenPrefabId == id) chosenPrefabId = -1;
         else chosenPrefabId = id;
-        if (chosenPrefabId >= 0) buttons[chosenPrefabId].transform.localScale *= 1.1f;
+        if (chosenPrefabId >= 0) buttons[chosenPrefabId].transform.localScale *= 1.2f;
     }
 
     private void PlaceObject()
@@ -44,7 +46,8 @@ public class ObjectPlacerManager : MonoBehaviour
         {
             float objectHeight = prefabs[chosenPrefabId].transform.localScale.y / 2;
             Vector3 spawnPosition = hit.point + Vector3.up * objectHeight;
-            Instantiate(prefabs[chosenPrefabId], spawnPosition, Quaternion.identity);
+            var unit = Instantiate(prefabs[chosenPrefabId], spawnPosition, Quaternion.identity);
+            unit.gameObject.tag=PlayerTag;
         }
     }
 

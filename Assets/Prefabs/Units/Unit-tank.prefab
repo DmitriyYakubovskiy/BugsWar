@@ -239,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cd515122af45a0a44ac16ad4b9175d83, type: 3}
       propertyPath: m_TagString
-      value: BlueUnit
+      value: BlueTeam
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5b2210f33bfbb4f9a497e243180780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 1000
   attackInterval: 1
 --- !u!114 &7173280416287034946
 MonoBehaviour:
@@ -345,8 +345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 6855209427294439595}
-  enemyTag: RedTower
-  SearchInterval: 1
+  searchInterval: 0.5
+  typeForAttack: 3
 --- !u!114 &4983705206107891538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +360,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 4188653754563488285}
-  lives: 50
+  lives: 5000
+  typeOfUnit: 0
 --- !u!136 &7799335622033781175
 CapsuleCollider:
   m_ObjectHideFlags: 0
