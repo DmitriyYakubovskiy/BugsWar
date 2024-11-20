@@ -5,12 +5,13 @@ using UnityEngine.AI;
 public class TankUnitLogic : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private string enemyTag;
     [SerializeField] private float SearchInterval=5f;
 
     private GameObjectManager unitsManager;
     private GameObject nearestEnemy = null;
     private AttackController attackController;
+
+    public string enemyTag;
 
     private void Start()
     {

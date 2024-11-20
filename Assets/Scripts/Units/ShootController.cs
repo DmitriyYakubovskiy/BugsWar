@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class ShootController : MonoBehaviour
 {
@@ -26,9 +27,13 @@ public class ShootController : MonoBehaviour
         StartCoroutine(AttackCoroutine());
         shooterUnitLogic = GetComponent<ShooterUnitLogic>();
     }
+
     private void Update()
     {
-        print(ObjectForAttackInArea);
+        if (ObjectForAttackInArea)
+        {
+            transform.LookAt(objectForAttack.transform);
+        }
     }
 
     private void ObjectForAttackDied(GameObject gameObject)
@@ -42,7 +47,7 @@ public class ShootController : MonoBehaviour
         Bullet son = Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
         son.damage = damage;
         son.enemyTag = shooterUnitLogic.enemyTag;
-        son.GetComponent<Rigidbody>().AddForce(-(gunPoint.transform.position - objectForAttack.transform.position).normalized * force, ForceMode.Impulse);
+        son.GetComponent<Rigidbody>().AddForce(-(gunPoint.transform.position - objectForAttack.transform.position).normalized * force + Vector3.up, ForceMode.Impulse);
  
     }
 

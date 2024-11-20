@@ -10,10 +10,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.TryGetComponent<Unit>(out Unit unit) && col.CompareTag(enemyTag))
+        if (col.TryGetComponent<Unit>(out Unit unit) && col.CompareTag(enemyTag) && col.isTrigger == false)
         {
             unit.TakeDamage(damage);
             Destroy(gameObject);
-        }   
+        }
+        else if (col.CompareTag("Platform"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

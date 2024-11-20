@@ -9,6 +9,7 @@ TagManager:
   - Unit
   - RedTower
   - BlueTower
+  - Platform
   layers:
   - Default
   - TransparentFX

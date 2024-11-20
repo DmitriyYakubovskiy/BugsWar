@@ -153,15 +153,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDistance: 10
-  damage: 30
-  turretLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   unitTag: BlueUnit
   target: {fileID: 0}
   towerHead: {fileID: 3730649956953773586}
   reloadCooldown: 2
+  force: 10
   bullet: {fileID: 6949589082416149493, guid: 6e43f8aac970f9444a6092308b8fe79f, type: 3}
+  damage: 100
+  SearchInterval: 5
 --- !u!1 &3730649956953773586
 GameObject:
   m_ObjectHideFlags: 0
