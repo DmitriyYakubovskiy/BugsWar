@@ -25,13 +25,13 @@ public class RandomSpawnUnitsManager : MonoBehaviour
         );
         if (duo)
         {
-            GameObject son = Instantiate(prefabs[0], spawnPosition, Quaternion.identity);
+            GameObject son = Instantiate(prefabs[0], spawnPosition, Quaternion.Euler(0, 180, 0));
             son.transform.tag = AiTag;
             duo = false;
         }
         else
         {
-            GameObject son = Instantiate(prefabs[1], spawnPosition, Quaternion.identity);
+            GameObject son = Instantiate(prefabs[1], spawnPosition, Quaternion.Euler(0, 180, 0));
             son.tag = AiTag;
             duo =true;
         }

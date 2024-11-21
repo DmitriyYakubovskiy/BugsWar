@@ -1,16 +1,21 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ObjectPlacerManager : MonoBehaviour
 {
+    [SerializeField]  private GraphicRaycaster graphicRaycaster;
+    [SerializeField] private SupplyController supplyController;
     [SerializeField] private GameObject[] prefabs;
-    [SerializeField] private LayerMask layerMask;
     [SerializeField] private Transform[] buttons;
+    [SerializeField] private Sprite image;
+    [SerializeField] private Sprite pressedImage;
+    [SerializeField] private LayerMask layerMask;
     [SerializeField] private Tags playerTag;
     [SerializeField] private float rayDistanse = 100f;
-    [SerializeField]  private GraphicRaycaster graphicRaycaster;
+
     private EventSystem eventSystem;
     private int chosenPrefabId = -1;
 
@@ -19,6 +24,11 @@ public class ObjectPlacerManager : MonoBehaviour
     private void Start()
     {
         eventSystem = FindObjectOfType<EventSystem>();
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = prefabs[i].GetComponent<Unit>().Cost.ToString();  
+        }
+
     }
 
     private void Update()
@@ -29,10 +39,20 @@ public class ObjectPlacerManager : MonoBehaviour
 
     public void ChosePrefab(int id)
     {
-        if (chosenPrefabId >= 0) buttons[chosenPrefabId].transform.localScale /= 1.2f;
+        if (supplyController.SupplyValue < prefabs[id].GetComponent<Unit>().Cost) return;
+        if (chosenPrefabId >= 0)
+        {
+            SelectButton(false);
+        }
         if (chosenPrefabId == id) chosenPrefabId = -1;
         else chosenPrefabId = id;
-        if (chosenPrefabId >= 0) buttons[chosenPrefabId].transform.localScale *= 1.2f;
+        if (chosenPrefabId >= 0) SelectButton(true);
+    }
+
+    private void SelectButton(bool isSelect)
+    {
+        if (isSelect) buttons[chosenPrefabId].gameObject.GetComponent<Button>().image.sprite = pressedImage;
+        else buttons[chosenPrefabId].gameObject.GetComponent<Button>().image.sprite = image;
     }
 
     private void PlaceObject()
@@ -44,10 +64,17 @@ public class ObjectPlacerManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayDistanse, layerMask))
         {
+            if (supplyController.SupplyValue < prefabs[chosenPrefabId].GetComponent<Unit>().Cost)
+            {
+                SelectButton(false);
+                return;
+            }
+            supplyController.SupplyValue -= prefabs[chosenPrefabId].GetComponent<Unit>().Cost;
             float objectHeight = prefabs[chosenPrefabId].transform.localScale.y / 2;
             Vector3 spawnPosition = hit.point + Vector3.up * objectHeight;
             var unit = Instantiate(prefabs[chosenPrefabId], spawnPosition, Quaternion.identity);
             unit.gameObject.tag=PlayerTag;
+            SelectButton(false);
         }
     }
 

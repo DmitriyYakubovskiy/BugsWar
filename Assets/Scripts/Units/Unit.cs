@@ -6,8 +6,10 @@ public class Unit : MonoBehaviour, IUnit
     [SerializeField] private ProgressBar progressBar;
     [SerializeField] private float lives;
     [SerializeField] private TypesOfUnits typeOfUnit;
+    [SerializeField] private float cost = 5;
     private Tags enemyTag;
 
+    public float Cost { get => cost; }
     public string EnemyTag { get => GameDataHelper.GetTag(enemyTag); set => enemyTag = GameDataHelper.GetTag(value); }
     public TypesOfUnits TypeOfUnit {  get { return typeOfUnit; } }
 
