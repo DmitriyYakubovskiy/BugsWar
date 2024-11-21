@@ -607,7 +607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 916919903703656436, guid: 4671ba4437f816f40bdf844fc4cbc65d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.338
+      value: -0.185
       objectReference: {fileID: 0}
     - target: {fileID: 916919903703656436, guid: 4671ba4437f816f40bdf844fc4cbc65d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1346,7 +1346,7 @@ MonoBehaviour:
   - {fileID: 5238491998009460375, guid: b414673160000d8429232ba089ef16d5, type: 3}
   spawnInterval: 3
   spawnAreaSize: {x: 10, y: 0, z: 3}
-  aiTag: 1
+  aiTag: 2
 --- !u!4 &412102308
 Transform:
   m_ObjectHideFlags: 0
@@ -2241,7 +2241,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  playerTag: 0
+  playerTag: 1
   rayDistanse: 100
 --- !u!4 &786238117
 Transform:
@@ -3337,7 +3337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 916919903703656436, guid: 4671ba4437f816f40bdf844fc4cbc65d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.332
+      value: -0.193
       objectReference: {fileID: 0}
     - target: {fileID: 916919903703656436, guid: 4671ba4437f816f40bdf844fc4cbc65d, type: 3}
       propertyPath: m_LocalRotation.w

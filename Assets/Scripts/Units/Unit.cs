@@ -36,7 +36,7 @@ public class Unit : MonoBehaviour, IUnit
         if (gameObject.tag == GameDataHelper.GetTag(Tags.BlueTeam))
         {
             progressBar.SetColor(Color.green);
-            EnemyTag=GameDataHelper.GetTag(Tags.RedTeam);
+            EnemyTag = GameDataHelper.GetTag(Tags.RedTeam);
         }
         else
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ObjectPlacerManager : MonoBehaviour
+public class ObjectPlacer : MonoBehaviour
 {
     [SerializeField]  private GraphicRaycaster graphicRaycaster;
     [SerializeField] private SupplyController supplyController;
@@ -52,7 +52,11 @@ public class ObjectPlacerManager : MonoBehaviour
     private void SelectButton(bool isSelect)
     {
         if (isSelect) buttons[chosenPrefabId].gameObject.GetComponent<Button>().image.sprite = pressedImage;
-        else buttons[chosenPrefabId].gameObject.GetComponent<Button>().image.sprite = image;
+        else
+        {
+            buttons[chosenPrefabId].gameObject.GetComponent<Button>().image.sprite = image;
+            chosenPrefabId = -1;
+        }
     }
 
     private void PlaceObject()

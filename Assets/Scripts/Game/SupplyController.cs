@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -16,8 +15,10 @@ public class SupplyController : MonoBehaviour
         get => supplyValue;
         set
         {
-            supplyValue = value;
-            if(text != null) text.text= supplyValue.ToString();
+            if (value > maxValue) supplyValue = maxValue;
+            else if(value<=0) supplyValue = 0;
+            else supplyValue = value;
+            if(text != null) text.text = supplyValue.ToString();
         }
     }
 

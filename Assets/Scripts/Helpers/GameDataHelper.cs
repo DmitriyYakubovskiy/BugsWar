@@ -5,6 +5,7 @@ public static class GameDataHelper
 {
     private static Dictionary<Tags, string> tags = new Dictionary<Tags, string>()
     {
+        { Tags.None,"None" },
         { Tags.BlueTeam,"BlueTeam" },
         { Tags.RedTeam,"RedTeam" },
 
@@ -12,6 +13,7 @@ public static class GameDataHelper
 
     public static string GetTag(Tags tag)
     {
+        if(tag == Tags.None) return null;
         return tags[tag];
     }
 

@@ -24,8 +24,8 @@ public class ShootController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(AttackCoroutine());
         shooterUnitLogic = GetComponent<ShooterUnitLogic>();
+        StartCoroutine(AttackCoroutine());
     }
 
     private void Update()
@@ -55,6 +55,11 @@ public class ShootController : MonoBehaviour
     {
         while (true)
         {
+            if (shooterUnitLogic.Unit?.EnemyTag == null)
+            {
+                yield return new WaitForSeconds(0.2f);
+                continue;
+            }
             if (objectForAttack == null)
             {
                 ObjectForAttackInArea = false;

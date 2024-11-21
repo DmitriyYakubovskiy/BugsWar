@@ -294,8 +294,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1, y: 0.9579345, z: 3.0155153}
+  m_Center: {x: 0, y: 0.68272084, z: -0.47101736}
 --- !u!195 &6855209427294439595
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5b2210f33bfbb4f9a497e243180780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1000
+  damage: 3000
   attackInterval: 1
 --- !u!114 &7173280416287034946
 MonoBehaviour:
@@ -360,8 +360,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 4188653754563488285}
-  lives: 5000
-  typeOfUnit: 0
+  lives: 10000
+  typeOfUnit: 1
+  cost: 5
 --- !u!136 &7799335622033781175
 CapsuleCollider:
   m_ObjectHideFlags: 0

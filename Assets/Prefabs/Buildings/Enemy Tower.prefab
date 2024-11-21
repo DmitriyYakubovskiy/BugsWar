@@ -54,6 +54,7 @@ MonoBehaviour:
   progressBar: {fileID: 8096936534209343292}
   lives: 20000
   typeOfUnit: 3
+  cost: 5
 --- !u!33 &8453707633827874468
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -154,7 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDistance: 8
-  enemyTag: 0
   target: {fileID: 0}
   towerHead: {fileID: 3730649956953773586}
   reloadCooldown: 2
@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 916919903703656436, guid: 4671ba4437f816f40bdf844fc4cbc65d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.358
+      value: -0.035
       objectReference: {fileID: 0}
     - target: {fileID: 916919903703656436, guid: 4671ba4437f816f40bdf844fc4cbc65d, type: 3}
       propertyPath: m_LocalRotation.w

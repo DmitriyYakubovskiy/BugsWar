@@ -40,6 +40,11 @@ public class TankUnitLogic : MonoBehaviour
         while (true)
         {
             var nearest = float.MaxValue;
+            if (unit.EnemyTag==null)
+            {
+                yield return new WaitForSeconds(0.2f);
+                continue;
+            }
             if (!unitsManager.Units.ContainsKey(unit.EnemyTag))
             {
                 yield return new WaitForSeconds(0.2f);

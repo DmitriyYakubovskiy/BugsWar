@@ -1,5 +1,6 @@
 public enum Tags
 {
-    BlueTeam=0,
-    RedTeam=1
+    None = 0,
+    BlueTeam=1,
+    RedTeam=2
 }
