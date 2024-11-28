@@ -12,7 +12,7 @@ public class ShooterUnitLogic : MonoBehaviour
     private GameObjectManager unitsManager;
     private GameObject nearestEnemy = null;
     private ShootController shootController;
-    private Unit unit;
+    public Unit unit;
 
     public Unit Unit { get { return unit; } }
 

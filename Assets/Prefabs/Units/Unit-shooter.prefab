@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ab0c79366969f428fa7ed866a3c515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1000
+  damage: 100
   attackInterval: 1
   bullet: {fileID: 6949589082416149493, guid: 6e43f8aac970f9444a6092308b8fe79f, type: 3}
   gunPoint: {fileID: 6648008145953018523}
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 5592034597673163683}
-  lives: 5000
+  lives: 1000
   typeOfUnit: 2
   cost: 5
 --- !u!65 &4997211531776639206
