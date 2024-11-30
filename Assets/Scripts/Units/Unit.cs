@@ -43,6 +43,7 @@ public class Unit : MonoBehaviour, IUnit
             progressBar.SetColor(Color.red);
             EnemyTag = GameDataHelper.GetTag(Tags.BlueTeam);
         }
+        
     }
 
     public void TakeDamage(float damage)
@@ -53,6 +54,16 @@ public class Unit : MonoBehaviour, IUnit
 
     private void Die()
     {
+        if (gameObject.name == "Enemy Main Tower" && gameObject.CompareTag("RedTeam"))
+        {
+            WinDefeatViewer winDefeatViewer = GameObject.FindAnyObjectByType<WinDefeatViewer>();
+            winDefeatViewer.Result(true);
+        }
+        else if (gameObject.name == "Enemy Main Tower" && gameObject.CompareTag("BlueTeam"))
+        {
+            WinDefeatViewer winDefeatViewer = GameObject.FindAnyObjectByType<WinDefeatViewer>();
+            winDefeatViewer.Result(false);
+        }
         die?.Invoke(gameObject);
         Destroy(gameObject);
     }

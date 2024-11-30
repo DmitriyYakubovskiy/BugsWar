@@ -1,19 +1,21 @@
+using System.Collections;
 using UnityEngine;
 
 public class RandomSpawnUnitsManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] prefabs; // Префаб для спавна
-    [SerializeField] private float spawnInterval = 4f; // Интервал спавна в секундах
     [SerializeField] private Vector3 spawnAreaSize = new Vector3(5f, 0f, 5f); // Размер области спавна
     [SerializeField] private Tags aiTag; 
 
     private bool duo;
 
+    public float spawnInterval = 5f;
+
     public string AiTag { get => GameDataHelper.GetTag(aiTag); set => aiTag = GameDataHelper.GetTag(value); }
 
     private void Start()
     {
-        InvokeRepeating("SpawnPrefab", 0f, spawnInterval);
+        StartCoroutine(SpawnCoroutine());
     }
 
     private void SpawnPrefab()
@@ -34,6 +36,15 @@ public class RandomSpawnUnitsManager : MonoBehaviour
             GameObject son = Instantiate(prefabs[1], spawnPosition, Quaternion.Euler(0, 180, 0));
             son.tag = AiTag;
             duo =true;
+        }
+    }
+    private IEnumerator SpawnCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(spawnInterval);
+            SpawnPrefab();
         }
     }
 }
