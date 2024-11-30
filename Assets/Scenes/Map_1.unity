@@ -2344,10 +2344,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8527622195005555904, guid: 493e7c5017b067040bef6b6f3462f11b, type: 3}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2521,6 +2517,10 @@ PrefabInstance:
     - target: {fileID: 5238491998009460375, guid: b414673160000d8429232ba089ef16d5, type: 3}
       propertyPath: m_Name
       value: Unit-shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5238491998009460375, guid: b414673160000d8429232ba089ef16d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3404,6 +3404,7 @@ MonoBehaviour:
   retryButton: {fileID: 1338847992}
   menuButton: {fileID: 342320397}
   text: {fileID: 2117487398}
+  textOnPanel: {fileID: 112410512}
 --- !u!114 &1204178159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3417,6 +3418,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AI: {fileID: 412102306}
+  juk: {fileID: 7285897298200012395, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
+  boss: {fileID: 5238491998009460375, guid: b414673160000d8429232ba089ef16d5, type: 3}
+  aiTag: 2
 --- !u!1 &1211894795
 GameObject:
   m_ObjectHideFlags: 0
@@ -4570,6 +4574,10 @@ PrefabInstance:
       propertyPath: damage
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 8596826288278511586, guid: b9b9c0ab0ff70f749b084df87b50b18e, type: 3}
+      propertyPath: attackDistance
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5064,6 +5072,10 @@ PrefabInstance:
     - target: {fileID: 8596826288278511586, guid: b9b9c0ab0ff70f749b084df87b50b18e, type: 3}
       propertyPath: enemyTag
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596826288278511586, guid: b9b9c0ab0ff70f749b084df87b50b18e, type: 3}
+      propertyPath: attackDistance
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5605,6 +5617,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798947597}
   m_CullTransparentMesh: 1
+--- !u!1 &1814686510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1814686511}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1814686511
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814686510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.05, y: 0, z: 3.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1846914416
 GameObject:
   m_ObjectHideFlags: 0
@@ -6138,6 +6181,10 @@ PrefabInstance:
     - target: {fileID: 8596826288278511586, guid: b9b9c0ab0ff70f749b084df87b50b18e, type: 3}
       propertyPath: enemyTag
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596826288278511586, guid: b9b9c0ab0ff70f749b084df87b50b18e, type: 3}
+      propertyPath: attackDistance
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6901,6 +6948,10 @@ PrefabInstance:
       propertyPath: damage
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 8596826288278511586, guid: b9b9c0ab0ff70f749b084df87b50b18e, type: 3}
+      propertyPath: attackDistance
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6924,3 +6975,4 @@ SceneRoots:
   - {fileID: 786238117}
   - {fileID: 633178271}
   - {fileID: 1587419080}
+  - {fileID: 1814686511}

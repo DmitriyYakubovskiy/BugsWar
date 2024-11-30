@@ -10,7 +10,7 @@ public class WinDefeatViewer : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private Button retryButton, menuButton;
-    [SerializeField] private TMP_Text text;
+    [SerializeField] private TMP_Text text, textOnPanel;
     void Start()
     {
         GameSceneManager sceneManager = GameObject.FindAnyObjectByType<GameSceneManager>();
@@ -25,13 +25,25 @@ public class WinDefeatViewer : MonoBehaviour
         if (result)
         {
             gameOverPanel.SetActive(true);
-            text.text = "теcsст";
+            text.text = "Следующий уровень";
             GameData.score++;
             retryButton.onClick.AddListener(NextLevel);
         }
         else
         {
-            retryButton.onClick.AddListener(RetryGame);
+            if (GameData.score != 2)
+            {
+                gameOverPanel.SetActive(true);
+                text.text = "Играть заново";
+                retryButton.onClick.AddListener(RetryGame);
+            }
+            else
+            {
+                gameOverPanel.SetActive(true); 
+                textOnPanel.text = "Так не честно!";
+                text.text = "Сделать честно";
+                retryButton.onClick.AddListener(RetryGame);
+            }
         }
         
     }

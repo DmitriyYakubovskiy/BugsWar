@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class TankUnitLogic : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent agent;
+    
     [SerializeField] private float searchInterval=5f;
     [SerializeField] private TypesOfUnits typeForAttack;
 
@@ -14,6 +14,7 @@ public class TankUnitLogic : MonoBehaviour
     private Unit unit;
 
     public Unit Unit { get { return unit; } }
+    public NavMeshAgent agent;
 
     private void Start()
     {

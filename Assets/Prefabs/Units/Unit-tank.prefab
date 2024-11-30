@@ -305,8 +305,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 7285897298200012395}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 2.5
+  m_Radius: 0.41
+  m_Speed: 1
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 100
@@ -330,8 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5b2210f33bfbb4f9a497e243180780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
   attackInterval: 1
+  damage: 50
 --- !u!114 &7173280416287034946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,9 +344,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61190ac9749ac6f44b213744509fbbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 6855209427294439595}
   searchInterval: 0.5
   typeForAttack: 3
+  agent: {fileID: 6855209427294439595}
 --- !u!114 &4983705206107891538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressBar: {fileID: 4188653754563488285}
-  lives: 10000
+  lives: 5000
   typeOfUnit: 1
   cost: 5
 --- !u!136 &7799335622033781175

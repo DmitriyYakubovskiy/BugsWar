@@ -4,8 +4,6 @@ using UnityEngine.Animations;
 
 public class ShootController : MonoBehaviour
 {
-    [SerializeField] private float damage = 1;
-    [SerializeField] private float attackInterval = 1;
     [SerializeField] private Bullet bullet;
     [SerializeField] private GameObject gunPoint;
     [SerializeField] private int force;
@@ -14,6 +12,7 @@ public class ShootController : MonoBehaviour
 
 
     public bool ObjectForAttackInArea { get; set; } = false;
+    public float attackInterval = 1, damage = 1;
 
     public void SetAttackObject(Unit objectForAttack)
     {

@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    [SerializeField] private float damage=1;
     [SerializeField] private float attackInterval = 1;
     private Unit objectForAttack = null;
 
     public bool ObjectForAttackInArea { get; set; } = false;
+    public float damage = 1;
 
     public void SetAttackObject(Unit objectForAttack)
     {
