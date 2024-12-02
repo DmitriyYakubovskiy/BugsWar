@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class WinDefeatViewer : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private Button retryButton, menuButton;
     [SerializeField] private TMP_Text text, textOnPanel;
+
     void Start()
     {
         GameSceneManager sceneManager = GameObject.FindAnyObjectByType<GameSceneManager>();
@@ -31,6 +29,7 @@ public class WinDefeatViewer : MonoBehaviour
         }
         else
         {
+            textOnPanel.text = "Чето ты проиграл";
             if (GameData.score != 2)
             {
                 gameOverPanel.SetActive(true);
@@ -53,6 +52,7 @@ public class WinDefeatViewer : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }
+
     void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

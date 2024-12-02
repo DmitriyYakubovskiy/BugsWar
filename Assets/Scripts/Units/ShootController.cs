@@ -8,8 +8,8 @@ public class ShootController : MonoBehaviour
     [SerializeField] private GameObject gunPoint;
     [SerializeField] private int force;
     private ShooterUnitLogic shooterUnitLogic;
+    private SoundController soundController;
     private Unit objectForAttack = null;
-
 
     public bool ObjectForAttackInArea { get; set; } = false;
     public float attackInterval = 1, damage = 1;
@@ -23,6 +23,7 @@ public class ShootController : MonoBehaviour
 
     private void Start()
     {
+        soundController = GetComponent<SoundController>();
         shooterUnitLogic = GetComponent<ShooterUnitLogic>();
         StartCoroutine(AttackCoroutine());
     }
@@ -43,11 +44,11 @@ public class ShootController : MonoBehaviour
     }
     private void Shoot()
     {
+        soundController.PlaySound(2, soundController.Volume);
         Bullet son = Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
         son.damage = damage;
         son.enemyTag = shooterUnitLogic.Unit.EnemyTag;
         son.GetComponent<Rigidbody>().AddForce(-(gunPoint.transform.position - objectForAttack.transform.position).normalized * force + Vector3.up, ForceMode.Impulse);
- 
     }
 
     private IEnumerator AttackCoroutine()

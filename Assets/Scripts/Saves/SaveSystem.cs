@@ -1,13 +1,17 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public partial class SaveData
 {
-    //прописывай тут данные для сохранения, например public int a = 0;
-    public SaveData() { }
+    public float musicVolume = 1;
+    public float gameVolume = 1;
+    public bool[] levels=new bool[3];
+    public SaveData()
+    {
+        levels[0] = true;
+    }
 }
 
 public class SaveSystem : MonoBehaviour

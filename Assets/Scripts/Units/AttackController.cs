@@ -4,6 +4,7 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     [SerializeField] private float attackInterval = 1;
+    private SoundController soundController;
     private Unit objectForAttack = null;
 
     public bool ObjectForAttackInArea { get; set; } = false;
@@ -18,6 +19,7 @@ public class AttackController : MonoBehaviour
 
     private void Start()
     {
+        soundController = GetComponent<SoundController>();
         StartCoroutine(AttackCoroutine());
     }
 
@@ -44,6 +46,7 @@ public class AttackController : MonoBehaviour
                 continue;
             }
             objectForAttack.TakeDamage(damage);
+            soundController.PlaySound(1,soundController.Volume);
             yield return new WaitForSeconds(attackInterval);
         }
     }

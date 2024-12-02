@@ -11,6 +11,10 @@ public class GameData : MonoBehaviour
     public static int score = 0;
     public string AiTag { get => GameDataHelper.GetTag(aiTag); set => aiTag = GameDataHelper.GetTag(value); }
 
+    public static void SetScore(int score)
+    {
+        GameData.score = score;   
+    }
 
     private void Awake()
     {
