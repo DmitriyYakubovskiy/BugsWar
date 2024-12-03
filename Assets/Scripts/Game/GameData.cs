@@ -6,7 +6,7 @@ public class GameData : MonoBehaviour
     [SerializeField] private GameObject AI, juk, boss;
     [SerializeField] private Tags aiTag;
 
-    private static bool activeted = false;
+    public static bool activeted = false;
 
     public static int score = 0;
     public string AiTag { get => GameDataHelper.GetTag(aiTag); set => aiTag = GameDataHelper.GetTag(value); }
@@ -46,6 +46,7 @@ public class GameData : MonoBehaviour
             unit.Lives = 1000000000;
             AttackController attackController = son.GetComponent<AttackController>();
             attackController.damage = 10000;
+            son.GetComponent<Rigidbody>().mass *= 100;
             if (activeted)
             {
                 GameObject sonBoss = Instantiate(boss, new Vector3(0, 0, -3.5f), Quaternion.identity);
@@ -55,10 +56,9 @@ public class GameData : MonoBehaviour
                 Unit unitBoss = sonBoss.GetComponent<Unit>();
                 unitBoss.Lives = 1000000000;
                 ShootController shootController = sonBoss.GetComponent<ShootController>();
-                shootController.attackInterval = 0;
-                shootController.damage = 1000000;
+                shootController.attackInterval = 0.2f;
+                shootController.damage = 40000000;
             }
-            activeted = true;
         }
     }
 }

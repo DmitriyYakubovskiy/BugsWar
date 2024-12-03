@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volueParameter: MusicVolume
   isMusic: 1
-  mixer: {fileID: 24100000, guid: eb156bc5db6398942a492d0a7bc59312, type: 2}
+  mixer: {fileID: 24100000, guid: cf923bf2625a8394f950da7f0c333952, type: 2}
   slider: {fileID: 87801084}
 --- !u!1 &197012341
 GameObject:

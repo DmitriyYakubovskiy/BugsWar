@@ -41,6 +41,7 @@ public class WinDefeatViewer : MonoBehaviour
                 gameOverPanel.SetActive(true); 
                 textOnPanel.text = "Так не честно!";
                 text.text = "Сделать честно";
+                GameData.activeted = true;
                 retryButton.onClick.AddListener(RetryGame);
             }
         }
