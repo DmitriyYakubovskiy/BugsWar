@@ -39,7 +39,6 @@ public class ObjectPlacer : MonoBehaviour
 
     public void ChosePrefab(int id)
     {
-        if (supplyController.SupplyValue < prefabs[id].GetComponent<Unit>().Cost) return;
         if (chosenPrefabId >= 0)
         {
             SelectButton(false);
@@ -61,6 +60,7 @@ public class ObjectPlacer : MonoBehaviour
 
     private void PlaceObject()
     {
+        if(chosenPrefabId!=-1) if (supplyController.SupplyValue < prefabs[chosenPrefabId].GetComponent<Unit>().Cost) return;
         if (IsPointerOverUI()) return;
         if (chosenPrefabId == -1) return;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

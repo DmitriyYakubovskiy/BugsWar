@@ -1525,9 +1525,10 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7285897298200012395, guid: 5d24dd5a9033a4c498ee4d5c806c9280, type: 3}
   - {fileID: 5238491998009460375, guid: b414673160000d8429232ba089ef16d5, type: 3}
+  - {fileID: 1723914104774062556, guid: 493e7c5017b067040bef6b6f3462f11b, type: 3}
   spawnAreaSize: {x: 10, y: 0, z: 3}
   aiTag: 2
-  spawnInterval: 3
+  spawnInterval: 5
 --- !u!4 &412102308
 Transform:
   m_ObjectHideFlags: 0
@@ -3654,7 +3655,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 399620100}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.48132145
+  m_Size: 0.8212786
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5403,7 +5404,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -16.4}
-  m_SizeDelta: {x: 948.3, y: 333.5}
+  m_SizeDelta: {x: 191.5, y: 333.5}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2007421418
 MonoBehaviour:

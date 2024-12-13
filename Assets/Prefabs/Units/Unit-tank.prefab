@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackInterval: 1
-  damage: 50
+  damage: 100
 --- !u!114 &7173280416287034946
 MonoBehaviour:
   m_ObjectHideFlags: 0

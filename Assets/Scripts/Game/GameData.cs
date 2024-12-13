@@ -31,17 +31,17 @@ public class GameData : MonoBehaviour
         if (score == 1)
         {
             RandomSpawnUnitsManager spawnUnitsManager = AI.GetComponent<RandomSpawnUnitsManager>();
-            spawnUnitsManager.spawnInterval = 2f;
+            spawnUnitsManager.SpawnInterval = 2f;
         }
         else if (score == 2)
         {
             RandomSpawnUnitsManager spawnUnitsManager = AI.GetComponent<RandomSpawnUnitsManager>();
-            spawnUnitsManager.spawnInterval = 9999999f;
+            spawnUnitsManager.SpawnInterval = 9999999f;
             GameObject son = Instantiate(juk, new Vector3(0, 0, 3.5f), Quaternion.Euler(0, 180, 0));
             son.transform.localScale = new Vector3(3, 3, 3);
             son.transform.tag = AiTag;
             NavMeshAgent agent = son.GetComponent<NavMeshAgent>();
-            agent.speed = 0.2f;
+            agent.speed = 0.3f;
             Unit unit = son.GetComponent<Unit>();
             unit.Lives = 1000000000;
             AttackController attackController = son.GetComponent<AttackController>();
